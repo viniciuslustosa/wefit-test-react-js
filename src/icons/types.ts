@@ -11,6 +11,7 @@ export interface IconDTO {
     name: IconString;
     color?: string;
     size?: number;
+    onClick?: () => void
 }
 
 export interface IIcons {

@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import Routes from './routes';
 import { CartProvider } from './contexts/CartContext';
 import { createTheme, ThemeProvider } from '@mui/material';
@@ -21,10 +20,10 @@ const theme = createTheme({
       contrastText: '#ffcc00',
     },
     success: {
-      light: '#3FB36D',
-      main: '#3FB36D',
+      light: '#039B00',
+      main: '#039B00',
       // dark: will be calculated from palette.secondary.main,
-      contrastText: '#ffcc00',
+      contrastText: 'white',
     },
     // Used by `getContrastText()` to maximize the contrast between
     // the background and the text.
@@ -35,19 +34,11 @@ const theme = createTheme({
     tonalOffset: 0.2,
   },
   typography: {
+    fontFamily: 'Open Sans',
     button: {
       textTransform: 'none'
     }
-  },
-  components: {
-    MuiInputLabel: {
-      styleOverrides: {
-        asterisk: {
-          color: '#ff0000',
-        },
-      },
-    },
-  },
+  }
 });
 
 function App() {

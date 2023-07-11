@@ -5,21 +5,36 @@ import Container from '@mui/material/Container';
 import Logo from '../Logo';
 import Icon from '../../icons';
 import { useCart } from '../../contexts/CartContext';
+import { ContentCart } from './style';
+import { useNavigate } from 'react-router-dom';
 
 function ResponsiveAppBar() {
+  const navigate = useNavigate()
   const { cart } = useCart()
 
   return (
-    <AppBar sx={{ backgroundColor: 'transparent', boxShadow: 'none', zIndex: 1 }} position="static">
+    <AppBar sx={{
+      backgroundColor: 'transparent',
+      boxShadow: 'none',
+      zIndex: 1,
+    }} position="static">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+        }} disableGutters>
           <Logo />
-          <div>
-            <span>
-              { cart?.length } Itens
-            </span>
+          <ContentCart onClick={() => navigate("cart")}>
+            <div>
+              <span>
+                Meu Carrinho
+              </span>
+              <span>
+                { cart?.quantity } Itens
+              </span>
+            </div>
             <Icon size={32} name="Cart" color='white'></Icon>
-          </div>
+          </ContentCart>
         </Toolbar>
       </Container>
     </AppBar>

@@ -5,6 +5,7 @@ import Base from '../components/Base';
 import Purchase from '../pages/Purchase';
 import Cart from '../pages/Cart';
 import Home from '../pages/Home';
+import NoProduct from '../pages/NoProduct';
 
 function AppRoutes() {
   return (
@@ -14,6 +15,7 @@ function AppRoutes() {
               <Route path="/" element={<Home />} />
               <Route path="cart" element={<Cart />} />
               <Route path="purchase" element={<Purchase />} />
+              <Route path="noproduct" element={<NoProduct />} />
             </Route>
             <Route path="*" element={<NotFound />} />
         </Routes>

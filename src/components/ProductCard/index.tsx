@@ -5,12 +5,14 @@ import Button from '../Button';
 import Text from '../Text';
 import Icon from '../../icons';
 import { useCart } from '../../contexts/CartContext';
+import { AmountFormat } from '../../helpers/AmontHelper';
 
 interface Props {
     product: Product,
+    quantitySelected: number,
 }
 
-const ProductCard: React.FC<Props> = ({ product }) => {
+const ProductCard: React.FC<Props> = ({ product, quantitySelected }) => {
   const { AddToCart } = useCart()
 
   const handleAddToCart = () => {
@@ -28,7 +30,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
           sx={{ width: '147px', margin: '0px auto'}}
           component="img"
           image={product.image}
-          alt="Paella dish"
+          alt={product.title}
         />
         <Text
           title={product.title}
@@ -36,11 +38,17 @@ const ProductCard: React.FC<Props> = ({ product }) => {
           align="center"
           bold
         />
+        <Text
+          title={AmountFormat(product.price)}
+          size={16}
+          align="center"
+          bold
+        />
         <Button
-          title={"ADICIONAR AO CARRINHO" + product.quantity}
+          title={quantitySelected > 0 ? quantitySelected + " ITEM ADICIONADO" : quantitySelected + " ADICIONAR AO CARRINHO"}
+          color={quantitySelected > 0 ? 'success' : 'primary'}
           onClick={handleAddToCart}
           icon="CartAdd"></Button>
-        <Icon name="CartAdd" size={20} color="black" />
     </Card>
   );
 }

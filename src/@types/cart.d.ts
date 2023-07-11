@@ -5,3 +5,9 @@ export interface Product {
     price: number,
     image: string,
 }
+
+export interface Cart {
+    products: Product[],
+    quantity?: number,
+    totalPrice?: number,
+}
