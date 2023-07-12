@@ -7,7 +7,7 @@ import { FinishCart, ProductContent, RowItem } from './style';
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import { AmountFormat } from '../../helpers/AmontHelper';
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 
 const Cart: React.FC = () => {
     const { cart, AddToCart, RemoveToCart, DeleteProduct, CleanCart} = useCart()
@@ -19,10 +19,18 @@ const Cart: React.FC = () => {
         navigate("/Purchase")
     }
 
-    useEffect(() => {
-        if(!cart?.products.length) {
-            navigate("/noproduct")
-        }
+    useLayoutEffect(() => {
+        const delay = 500; // Tempo de atraso para evitar que saia da página mesmo com produtos (em milissegundos)
+
+        const debounceTimer = setTimeout(() => {
+            if(!cart?.products.length) {
+                navigate("/noproduct")
+            }
+        }, delay);
+
+        return () => {
+            clearTimeout(debounceTimer);
+        };
     }, [cart])
 
     return (
@@ -36,7 +44,7 @@ const Cart: React.FC = () => {
             { !isSmallScreen && (<TableContainer>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
-                    <TableRow  sx={{ fontFamily: 'Roboto'}}>
+                    <TableRow sx={{ fontFamily: 'Open Sans'}}>
                         <TableCell>PRODUTO</TableCell>
                         <TableCell align="left">QTD</TableCell>
                         <TableCell align="left">SUBTOTAL</TableCell>

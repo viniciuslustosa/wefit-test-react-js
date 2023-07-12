@@ -50,6 +50,7 @@ export const RowItem = styled.div`
         > div {
             display: flex;
             flex-direction: column;
+            width: 130px;
             gap: 3px;
         }
     }
