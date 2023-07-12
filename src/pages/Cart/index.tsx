@@ -3,7 +3,7 @@ import { useCart } from '../../contexts/CartContext';
 import Icon from '../../icons';
 import Input from '../../components/Input';
 import Text from '../../components/Text';
-import { FinishCart, ProductContent, RowItem } from './style';
+import { FinishCart, ProductContent, RowItem, TableCellElement } from './style';
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import { AmountFormat } from '../../helpers/AmontHelper';
@@ -44,11 +44,11 @@ const Cart: React.FC = () => {
             { !isSmallScreen && (<TableContainer>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
-                    <TableRow sx={{ fontFamily: 'Open Sans'}}>
-                        <TableCell>PRODUTO</TableCell>
-                        <TableCell align="left">QTD</TableCell>
-                        <TableCell align="left">SUBTOTAL</TableCell>
-                        <TableCell align="left"></TableCell>
+                    <TableRow sx={{ fontFamily: 'Open Sans' }}>
+                        <TableCellElement>PRODUTO</TableCellElement>
+                        <TableCellElement align="left">QTD</TableCellElement>
+                        <TableCellElement align="left">SUBTOTAL</TableCellElement>
+                        <TableCellElement align="left"></TableCellElement>
                     </TableRow>
                     </TableHead>
                     <TableBody>

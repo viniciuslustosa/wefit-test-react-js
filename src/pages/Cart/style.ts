@@ -1,3 +1,4 @@
+import { TableCell } from '@mui/material';
 import styled from 'styled-components';
 
 export const FinishCart = styled.div`
@@ -87,4 +88,9 @@ export const ProductContent = styled.div`
         }
     }
     
+`
+
+export const TableCellElement = styled(TableCell)`
+    font-weight: bold !important;
+    color: #999999 !important;
 `
