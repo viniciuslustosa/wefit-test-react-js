@@ -30,7 +30,8 @@ const Cart: React.FC = () => {
             padding: '10px',
             gap: '10px',
             display: 'flex',
-            flexDirection: 'column'
+            flexDirection: 'column',
+            transition: 'transition: all 0.5s ease-out;',
           }}>
             { !isSmallScreen && (<TableContainer>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
