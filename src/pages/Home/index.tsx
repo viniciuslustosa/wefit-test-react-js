@@ -122,7 +122,7 @@ export const Home: React.FC = () => {
                                 <div>
                                     <ProductCard
                                         product={product}
-                                        quantitySelected={cart?.products.find(item => item.id === product.id)?.quantity || 0}
+                                        quantitySelected={cart?.products?.find(item => item.id === product.id)?.quantity || 0}
                                     />
                                 </div>
                             </Grid>
