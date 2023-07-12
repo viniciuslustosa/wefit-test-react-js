@@ -59,9 +59,6 @@ export const ProductContent = styled.div`
     display: flex;
     padding: 10px 0;
 
-    .quantityContent {
-    }
-
     .subtotalContent {
         display: flex;
         flex-direction: row;

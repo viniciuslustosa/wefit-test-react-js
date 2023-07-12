@@ -21,8 +21,6 @@ export default class ProductService {
             );
             const regex = new RegExp((searchText || "").toLowerCase());
             const data = products.filter(item => item.title.toLowerCase().match(regex));
-
-            console.log(data);
             return data;
         } catch (error) {
             console.log(error);

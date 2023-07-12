@@ -7,6 +7,7 @@ import { FinishCart, ProductContent, RowItem } from './style';
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import { AmountFormat } from '../../helpers/AmontHelper';
+import { useEffect } from 'react';
 
 const Cart: React.FC = () => {
     const { cart, AddToCart, RemoveToCart, DeleteProduct, CleanCart} = useCart()
@@ -17,6 +18,12 @@ const Cart: React.FC = () => {
         CleanCart()
         navigate("/Purchase")
     }
+
+    useEffect(() => {
+        if(!cart?.products.length) {
+            navigate("/noproduct")
+        }
+    }, [cart])
 
     return (
         <Card variant="outlined" sx={{
@@ -57,15 +64,15 @@ const Cart: React.FC = () => {
                             <TableCell align="left">
                                 <div style={{ display: 'flex', alignItems: 'center'}}>
                                     <Icon
-                                        onClick={() => AddToCart(row)}
-                                        name="Add"
+                                        onClick={() => RemoveToCart(row)}
+                                        name="Remove"
                                         size={18}
                                         color="#009EDD"
                                     />
-                                    <Input change={() => {}} value={row.quantity} />
+                                    <Input value={row.quantity} />
                                     <Icon
-                                        onClick={() => RemoveToCart(row)}
-                                        name="Remove"
+                                        onClick={() => AddToCart(row)}
+                                        name="Add"
                                         size={18}
                                         color="#009EDD"
                                     />
@@ -105,7 +112,7 @@ const Cart: React.FC = () => {
                                             size={18}
                                             color="#009EDD"
                                         />
-                                        <Input change={() => {}} value={row.quantity} />
+                                        <Input value={row.quantity} />
                                         <Icon
                                             onClick={() => RemoveToCart(row)}
                                             name="Remove"
@@ -125,7 +132,7 @@ const Cart: React.FC = () => {
             )}
             <Divider sx={{ borderColor: '#999999'}} variant='middle'></Divider>
             <FinishCart>
-                <Grid container spacing={2}>
+                <Grid container>
                     <Grid xs={12} md={6}>
                         <div className="priceContent">
                             <Text title="TOTAL" size={14} />
